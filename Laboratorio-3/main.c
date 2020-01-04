@@ -20,8 +20,6 @@ struct nodo {
     struct nodo* der;
 } typedef Nodo;
 
-typedef Nodo arbol;
-
 void insert(Nodo** tree, int val)
 {
     Nodo* temp = NULL;
@@ -57,19 +55,27 @@ void print_inorder(Nodo* tree)
 
 int main(int argc, const char * argv[]) {
     
+    FILE* f = fopen("/Users/josigna.cp/Documents/USACH/Materias/Semestre 2/ANÁLISIS DE ALGORITMOS Y ESTRUCTURA DE DATOS/Laboratorio 3/numeros.in","r");
+    
     Nodo *root;
-
     root = NULL;
     
-    /* Inserting nodes into tree */
-    insert(&root, 9);
-    insert(&root, 4);
-    insert(&root, 15);
-    insert(&root, 6);
-    insert(&root, 12);
-    insert(&root, 17);
-    insert(&root, 2);
-
+    int size;
+    int num = 0;
+    
+    
+    fscanf(f,"%d",&size);
+    
+    while(num < size)    //while loop with condition
+    {
+        /* insertando nodos */
+        int dato = 0;
+        fscanf(f,"%d",&dato);
+        
+        insert(&root, dato);
+        
+        num++;        //incremento
+    }
     
     print_inorder(root);
     printf("\n");
